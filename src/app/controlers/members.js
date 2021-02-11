@@ -37,8 +37,6 @@ module.exports = {
       // cod abaixo msm coisa de req.body.avatar_url || key
       if (req.body[key] == "") return res.send("Preencha todos os campos");
     }
-
-    let { avatar_url, birth, name, services, gender } = req.body;
     return;
   },
 
