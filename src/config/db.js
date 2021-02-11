@@ -1,9 +1,9 @@
-const { Poll } = require("pg");
+const { Pool } = require("pg");
 
-module.exports = new Poll({
+module.exports = new Pool({
   user: "postgres",
-  password: "postegres",
+  password: "postgres",
   host: "localhost",
   post: 5432,
-  database: "gymmmanager",
+  database: "gymmanager",
 });
