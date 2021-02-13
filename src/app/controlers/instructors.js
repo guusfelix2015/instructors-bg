@@ -58,7 +58,9 @@ module.exports = {
       if (req.body[key] == "") return res.send("Preencha todos os campos");
     }
 
-    return;
+    Instructor.update(req.body, () => {
+      return redirect(`instructors/${req.body.id}`);
+    });
   },
 
   delete(req, res) {
