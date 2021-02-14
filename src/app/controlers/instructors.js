@@ -23,7 +23,7 @@ module.exports = {
     }
 
     Instructor.create(req.body, function (instructor) {
-      return res.redirect(`/instructors/${instructor.id}`);
+      return res.redirect(`instructors/${instructor.id}`);
     });
   },
 
@@ -64,6 +64,8 @@ module.exports = {
   },
 
   delete(req, res) {
-    return;
+    Instructor.delete(req.body.id, () => {
+      return redirect("/instructors");
+    });
   },
 };
