@@ -6,7 +6,7 @@
       name="avatar_url"
       placeholder="http://"
       value="{{ member.avatar_url }}"
-    />
+/>
   </div>
 </div>
 
@@ -18,21 +18,21 @@
       name="name"
       placeholder="Nome do Membro"
       value="{{ member.name }}"
-    />
+/>
   </div>
 </div>
 
 <div class="item">
   <div>Email</div>
   <div>
-    <input type="email" name="email" value="{{ member.email }}" />
+    <input type="email" name="email" value="{{ member.email }}"/>
   </div>
 </div>
 
 <div class="item">
   <div>Data de nascimento</div>
   <div>
-    <input type="date" name="birth" value="{{ member.birth }}" />
+    <input type="date" name="birth" value="{{ member.birth }}"/>
   </div>
 </div>
 
@@ -51,7 +51,7 @@
 </div>
 
 <div class="item">
-  <div>Tipo</div>
+  <div>Tipo Sanguineo</div>
   <div>
     <select name="blood">
       <option value="A+" {if member.blood == "A+"} selected {endif}>A+</option>
@@ -69,17 +69,28 @@
 <div class="item">
   <div>Peso (Kg)</div>
   <div>
-    <input type="number" name="weigth" value="{{ member.weigth }}" />
+    <input type="number" name="weigth" value="{{ member.weigth }}"/>
   </div>
 </div>
 
 <div class="item">
   <div>Altura (cm)</div>
   <div>
-    <input type="number" name="heigth" value="{{ member.heigth }}" />
+    <input type="number" name="heigth" value="{{ member.heigth }}"/>
   </div>
 </div>
 
-<button type="submit">Salvar</button>
+<div class="item">
+  <div>Instrutor</div>
+  <div>
+    <select name="instructor">
+      {% for instructor in instructorOptions%}
+        <option value="{{instructor.id}}" { if member.instructor_id == instructor.id } selected {endif}>
+          {{instructor.name}}
+        </option>
+        {% endfor%}
+      </select>
+    </div>
+  </div>
 
-
+  <button type="submit">Salvar</button>
