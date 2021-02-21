@@ -3,17 +3,33 @@ const { age, date } = require("../../lib/utils");
 
 module.exports = {
   index(req, res) {
-    const { filter } = req.query;
+    let { filter, page, limit } = req.query;
 
-    if (filter) {
-      Instructor.findby(filter, (instructors) => {
+    page = page || 1;
+    limit = limit || 2;
+    let offset = limit * (page - 1);
+
+    const params = {
+      filter,
+      page,
+      limit,
+      offset,
+      callback(instructors) {
         return res.render("instructors/index", { instructors, filter });
-      });
-    } else {
-      Instructor.all(function (instructors) {
-        return res.render("instructors/index", { instructors });
-      });
-    }
+      },
+    };
+
+    Instructor.paginate(params);
+
+    // if (filter) {
+    //   Instructor.findby(filter, (instructors) => {
+    //     return res.render("instructors/index", { instructors, filter });
+    //   });
+    // } else {
+    //   Instructor.all(function (instructors) {
+    //     return res.render("instructors/index", { instructors });
+    //   });
+    // }
   },
 
   create(req, res) {
