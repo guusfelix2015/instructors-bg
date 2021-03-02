@@ -83,13 +83,13 @@ module.exports = {
     }
 
     Instructor.update(req.body, () => {
-      return redirect(`instructors/${req.body.id}`);
+      return res.redirect(`instructors/${req.body.id}`);
     });
   },
 
   delete(req, res) {
     Instructor.delete(req.body.id, () => {
-      return redirect("/instructors");
+      return res.redirect("/instructors");
     });
   },
 };
