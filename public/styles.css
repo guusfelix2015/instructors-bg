@@ -10,6 +10,10 @@ body {
   background-color: var(--primary-color);
 }
 
+button {
+  outline: none;
+}
+
 * {
   margin: 0;
   padding: 0;
